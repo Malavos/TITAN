@@ -6,13 +6,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
-using System;
 using System.Text;
 
 
 namespace api_lm
 {
-    public partial class Startup
+    public class Startup
     {
         public SymmetricSecurityKey signingKey;
 
@@ -93,22 +92,4 @@ namespace api_lm
             app.UseMvc();
         }
     }
-
-    public partial class Startup
-    {
-
-        private void ConfigureAuth(IApplicationBuilder app)
-        {
-
-            //app.UseJwtBearerAuthentication(new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions
-            //{
-            //    AutomaticAuthenticate = true,
-            //    AutomaticChallenge = true,
-            //    TokenValidationParameters = tokenValidationParameters
-            //});
-
-        }
-    }
-
-
 }

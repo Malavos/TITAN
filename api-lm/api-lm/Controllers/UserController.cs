@@ -14,13 +14,6 @@ namespace api_lm.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        //private MongoClient InitalizeMongo()
-        //{
-        //    var mongoClient = new MongoClient("mongodb://Hittorito:MyLifeForAiur41!1337@party-gg-shard-00-00-up6bv.mongodb.net:27017,party-gg-shard-00-01-up6bv.mongodb.net:27017,party-gg-shard-00-02-up6bv.mongodb.net:27017/test?ssl=true&replicaSet=party-gg-shard-0&authSource=admin");
-        //    return mongoClient;
-        //}
-
-
         /// <summary>
         /// Authenticates the user in the system.
         /// </summary>
