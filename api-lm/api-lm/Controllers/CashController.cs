@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using System;
@@ -14,13 +15,20 @@ namespace api_lm
     [Route("api/[controller]")]
     public class CashController : Controller
     {
+        /// <summary>
+        /// Get the logged in user cashes.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("login")]
         [ProducesResponseType(201, Type = typeof(BsonDocument))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Authorize]
         public IActionResult GetCashes()
         {
+
+
             return Ok();
         }
 
