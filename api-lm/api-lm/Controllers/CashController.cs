@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,12 @@ namespace api_lm
         [HttpGet]
         [Route("login")]
         [ProducesResponseType(201, Type = typeof(BsonDocument))]
-        [ProducesResponseType(HttpStatusCode.BadRequest)]
-        [ProducesResponseType(HttpStatusCode.NoContent)]
-
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public IActionResult GetCashes()
+        {
+            return Ok();
+        }
 
 
     }
