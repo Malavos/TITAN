@@ -65,5 +65,33 @@ namespace Common.Data
             var filter = Builders<BsonDocument>.Filter.Where(a => true);
             return await GetFromCollectionAsync(CollectionName, filter);
         }
+
+        public void InsertInCollection(string CollectionName, BsonDocument Entidade)
+        {
+            var collection = DataBase.GetCollection<BsonDocument>(CollectionName, null);
+
+            collection.InsertOne(Entidade);
+        }
+
+        public async void InsertInCollectionAsync(string CollectionName, BsonDocument Entidade)
+        {
+            var collection = DataBase.GetCollection<BsonDocument>(CollectionName, null);
+
+            await collection.InsertOneAsync(Entidade);
+        }
+
+        public void InsertInCollection(string CollectionName, IEnumerable<BsonDocument> Entidades)
+        {
+            var collection = DataBase.GetCollection<BsonDocument>(CollectionName, null);
+
+            collection.InsertMany(Entidades);
+        }
+
+        public async void InsertInCollectionAsync(string CollectionName, IEnumerable<BsonDocument> Entidades)
+        {
+            var collection = DataBase.GetCollection<BsonDocument>(CollectionName, null);
+
+            await collection.InsertManyAsync(Entidades);
+        }
     }
 }
