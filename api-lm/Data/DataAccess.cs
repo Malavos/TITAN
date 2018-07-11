@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Common.Data
 {
@@ -45,6 +46,24 @@ namespace Common.Data
         {
             var filter = Builders<BsonDocument>.Filter.Where(a => true);
             return GetFromCollection(CollectionName, filter);
+        }
+
+        public async Task<IEnumerable<BsonDocument>> GetFromCollectionAsync(string CollectionName, FilterDefinition<BsonDocument> Filter)
+        {
+            var collection = DataBase.GetCollection<BsonDocument>(CollectionName, null);
+            var filteredCollection = collection.Find(Filter);
+
+
+            using (var cursor = await filteredCollection.ToCursorAsync())
+            {
+                return await cursor.ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<BsonDocument>> GetFromCollectionAsync(string CollectionName)
+        {
+            var filter = Builders<BsonDocument>.Filter.Where(a => true);
+            return await GetFromCollectionAsync(CollectionName, filter);
         }
     }
 }
