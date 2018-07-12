@@ -93,5 +93,23 @@ namespace Common.Data
 
             await collection.InsertManyAsync(Entidades);
         }
+
+        public void UpdateCollection(string CollectionName, BsonDocument Entidade, FilterDefinition<BsonDocument> Filter, UpdateDefinition<BsonDocument> Update)
+        {
+            var collection = DataBase.GetCollection<BsonDocument>(CollectionName);
+
+            collection.UpdateOne(Filter, Update);
+        }
+
+        public void UpdateCollection(string CollectionName, BsonDocument Entidade)
+        {
+            var collection = DataBase.GetCollection<BsonDocument>(CollectionName);
+
+            var Filter = new FilterDefinitionBuilder<BsonDocument>().Eq("_id",Entidade["_id"]);
+            var Update = new UpdateDefinitionBuilder<BsonDocument>();
+
+
+            collection.UpdateOne(Filter, Update);
+        }
     }
 }
