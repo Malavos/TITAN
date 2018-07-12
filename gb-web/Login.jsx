@@ -97,6 +97,11 @@ class Login extends React.Component {
 
 	handleInputChanged(event){
 		const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState({
+     		[name]: value
+		});
 	};
 
 	render() {
@@ -108,8 +113,8 @@ class Login extends React.Component {
 					<CardHeader title="Bem vindo!" subheader="Acesse o sistema para cadastrar os seus débitos."/>
 					<CardContent>
 						<form className={classes.container} noValidate autoComplete="off">
-							<TextField id="inputLogin" value={this.state.user} fullWidth label="Login" helperText="Digite aqui seu usuário..." className={classes.textField} margin="normal" maxLength="64" />
-							<TextField id="inputPassword" value={this.state.password} fullWidth label="Senha" helperText="... e aqui sua senha!" className={classes.textField} margin="normal" type="password" maxLength="32"/>
+							<TextField id="inputLogin" name="user" value={this.state.user} fullWidth label="Login" helperText="Digite aqui seu usuário..." className={classes.textField} margin="normal" onChange={this.handleInputChanged} maxLength="64" />
+							<TextField id="inputPassword" name="password" value={this.state.password} fullWidth label="Senha" helperText="... e aqui sua senha!" className={classes.textField} margin="normal" onChange={this.handleInputChanged} type="password" maxLength="32"/>
 							<div className="rightDiv">
 								<Button onClick={this.login} variant="contained"  size="small" color="primary" aria-label="acessar" className={classes.button}>
 									<InputIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
