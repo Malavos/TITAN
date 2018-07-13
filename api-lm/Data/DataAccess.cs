@@ -101,15 +101,15 @@ namespace Common.Data
             collection.UpdateOne(Filter, Update);
         }
 
-        public void UpdateCollection(string CollectionName, BsonDocument Entidade)
-        {
-            var collection = DataBase.GetCollection<BsonDocument>(CollectionName);
+        //public void UpdateCollection(string CollectionName, BsonDocument Entidade)
+        //{
+        //    var collection = DataBase.GetCollection<BsonDocument>(CollectionName);
 
-            var Filter = new FilterDefinitionBuilder<BsonDocument>().Eq("_id",Entidade["_id"]);
-            var Update = new UpdateDefinitionBuilder<BsonDocument>();
+        //    var Filter = new FilterDefinitionBuilder<BsonDocument>().Eq("_id",Entidade["_id"]);
+        //    var Update = new UpdateDefinitionBuilder<BsonDocument>();
 
 
-            collection.UpdateOne(Filter, Update);
-        }
+        //    collection.UpdateOne(Filter, Update);
+        //}
     }
 }
